@@ -1,0 +1,3 @@
+[submodule "dependencies/jackson"]
+	path = dependencies/jackson
+	url = https://github.com/FasterXML/jackson.git

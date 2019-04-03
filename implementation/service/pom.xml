@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ning</groupId>
-	<artifactId>openweather</artifactId>
+	<artifactId>OpenWeatherService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>openweather</name>
 	<description>Demo project</description>
