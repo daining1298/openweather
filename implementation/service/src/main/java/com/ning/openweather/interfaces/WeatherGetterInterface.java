@@ -2,7 +2,7 @@ package com.ning.openweather.interfaces;
 
 public interface WeatherGetterInterface {
 	
-	public String getCurrentWeather();
+	public String getCurrentTemperature();
 	
 	public String getCurrentWeather(String location, int intervalSeconds);
 	
