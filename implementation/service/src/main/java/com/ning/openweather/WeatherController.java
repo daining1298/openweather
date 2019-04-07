@@ -26,12 +26,13 @@ public class WeatherController {
     		@RequestParam(value="interval", defaultValue="0") int interval) {
     	if(interval == 0) {
     		Debugger.log("get weather only once for location " + location);
-    		
+
+            return new Weather("Oulu,fi");
     	}
     	else {
     		Debugger.log("get weather for location " + location + " with interval " + interval);
-    		
+
+            return new Weather("Oulu,fi", interval);
     	}
-        return new Weather("Oulu,fi");
     }
 }
