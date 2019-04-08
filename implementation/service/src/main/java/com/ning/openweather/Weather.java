@@ -50,7 +50,8 @@ class Weather implements WeatherGetterInterface {
 	static final String OPEN_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?"
 			+ "q=%s&units=metric&&APPID=37aadf112bad11882bc795c536634e32";
 	private String mLocation;
-	int mInterval = 0; // requesting weather periodically in mInverval Seconds
+	private int mInterval = 0; // requesting weather periodically in mInverval Seconds
+	private WeatherGetter mGetter = new WeatherGetter();
 	
 	public Weather(String location) {
 		mLocation = location;
@@ -61,13 +62,17 @@ class Weather implements WeatherGetterInterface {
 		mInterval = interval;
 	}
 	
+	public void setGetter(WeatherGetter getter){
+		mGetter = getter;
+	}
+	
 	public String getCurrentTemperature(){
 		String result = ERROR_MESSAGE;
 		URL url;
 		if(mInterval > 0) {
 			//just to try and demo Object mapping
 			//TODO: periodic weather getting and pass back to client
-			String jsonString = new WeatherGetter().doGetWeather();
+			String jsonString = mGetter.doGetWeather();
 			return parseCurrentTemperature(jsonString);
 		}
 		else {
