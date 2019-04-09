@@ -14,9 +14,9 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-class Weather implements WeatherGetterInterface {
-	class WeatherGetter {
-		String doGetWeather() {
+class Weather {
+	class WeatherGetter implements WeatherGetterInterface{
+		public String doGetWeather() {
 			String result = "{\"error\"=\"failed to get weather\"}";
 	        try {
                 HttpURLConnection con;
@@ -51,7 +51,7 @@ class Weather implements WeatherGetterInterface {
 			+ "q=%s&units=metric&&APPID=37aadf112bad11882bc795c536634e32";
 	private String mLocation;
 	private int mInterval = 0; // requesting weather periodically in mInverval Seconds
-	private WeatherGetter mGetter = new WeatherGetter();
+	private WeatherGetterInterface mGetter = new WeatherGetter();
 	
 	public Weather(String location) {
 		mLocation = location;
@@ -62,8 +62,8 @@ class Weather implements WeatherGetterInterface {
 		mInterval = interval;
 	}
 	
-	public void setGetter(WeatherGetter getter){
-		mGetter = getter;
+	public void setGetter(WeatherGetterInterface mockedDependency){
+		mGetter = mockedDependency;
 	}
 	
 	public String getCurrentTemperature(){
@@ -110,24 +110,6 @@ class Weather implements WeatherGetterInterface {
 			}
 		}
 		return result;
-	}
-
-	@Override
-	public String getCurrentWeather(String location, int intervalSeconds) {
-		// TODO Auto-generated method stub
-		return "test";
-	}
-
-	@Override
-	public String getHourlyForcast(String location) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String get16DaysForcase(String location) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	private String parseCurrentTemperature(String jsonString) {

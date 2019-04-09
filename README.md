@@ -1,5 +1,7 @@
 # openweather
 fetch local weather from open weather map
+only tested with MAC. should also works on other platform. 
+Seems test cases are not running on Linux, probably maven configuration needs to be changed.
 
 Compile & Run
 - Service

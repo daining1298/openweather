@@ -12,6 +12,7 @@ public class WeatherModel {
 	
 	public int visibility;
 	public Object wind;
+	public Object snow;
 	public Object clouds;
 	public int dt;
 	public Object sys;
